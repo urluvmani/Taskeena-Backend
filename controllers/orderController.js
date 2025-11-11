@@ -41,7 +41,7 @@ export const createOrderController = async (req, res) => {
     const htmlForm = `
       <html><body>
         <h3 style="text-align:center;">Redirecting to Mock Payment Gateway...</h3>
-        <form id="mockForm" method="POST" action="http://localhost:8080/api/v1/order/payment-return">
+        <form id="mockForm" method="POST" action="${process.env.VITE_API_URL}/api/v1/order/payment-return">
           <input type="hidden" name="status" value="success" />
           <input type="hidden" name="orderId" value="${order._id}" />
           <input type="hidden" name="amount" value="${totalPrice}" />
