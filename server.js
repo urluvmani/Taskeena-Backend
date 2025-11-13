@@ -25,9 +25,11 @@ const app = express();
 
 // ✅ CORS setup
 const allowedOrigins = [
-  "https://taskeena.com",  // apna frontend vercel link
-  "http://localhost:5173"         // optional: for local testing
+  "https://taskeena.com",
+  "https://www.taskeena.com",
+  "http://localhost:5173"
 ];
+
 
 app.use(cors({
   origin: allowedOrigins,
