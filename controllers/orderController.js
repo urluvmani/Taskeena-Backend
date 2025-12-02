@@ -40,7 +40,7 @@ export const createOrderController = async (req, res) => {
     const fakeHash = crypto.randomBytes(16).toString("hex");
     const htmlForm = `
       <html><body>
-        <h3 style="text-align:center;">Redirecting to Mock Payment Gateway...</h3>
+        <h3 style="text-align:center;">Thanks for your Order!</h3>
         <form id="mockForm" method="POST" action="${process.env.VITE_API_URL}/api/v1/order/payment-return">
           <input type="hidden" name="status" value="success" />
           <input type="hidden" name="orderId" value="${order._id}" />

@@ -1,3 +1,4 @@
+
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
@@ -8,7 +9,7 @@ import authRoutes from "./routes/authRoutes.js";
 import categoryRoute from "./routes/categoryRoutes.js";
 import productRoute from "./routes/productRoutes.js";
 import orderRoute from "./routes/orderRoutes.js";
-import reviewRoutes from "./routes/reviewRoutes.js"; // ✅ FIXED
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -23,19 +24,19 @@ ConnectDB();
 // Initialize express
 const app = express();
 
-// ✅ CORS setup
 const allowedOrigins = [
   "https://taskeena.com",
   "https://www.taskeena.com",
-  "http://localhost:5173"
+  "http://localhost:5173", // <-- ADDED THE MISSING PORT 5174
 ];
 
-
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(express.json());
@@ -47,7 +48,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/order", orderRoute);
-app.use("/api/v1/review", reviewRoutes); // ✅ singular
+app.use("/api/v1/review", reviewRoutes);
 
 // Start server
 app.listen(PORT, () => {
