@@ -42,6 +42,14 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    ok: true,
+    service: "Taskeena Backend",
+    time: new Date().toISOString(),
+  });
+});
+
 
 // Routes
 app.use("/api/v1/auth", authRoutes);
