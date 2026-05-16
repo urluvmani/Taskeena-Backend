@@ -27,6 +27,7 @@ const app = express();
 const allowedOrigins = [
   "https://taskeena.com",
   "https://www.taskeena.com",
+  "https://taskeena.vercel.app/", // <-- ADDED THE MISSING PROTOCOL   
   "http://localhost:5173", // <-- ADDED THE MISSING PORT 5174
 ];
 
